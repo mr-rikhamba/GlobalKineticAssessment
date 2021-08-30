@@ -24,12 +24,12 @@ namespace CoinJar.Api.Controllers
         }
 
         [HttpGet("GetTotalAmount")]
-        public IActionResult GetTotalAmount()
+        public async Task<IActionResult> GetTotalAmount()
         {
             try
             {
                 _logger.LogInformation("Begin fetching amount.");
-               var totalAmount = _coinJarService.GetTotalAmount();
+                var totalAmount = await _coinJarService.GetTotalAmount();
                 _logger.LogInformation("Completed fetching amount.");
                 return Ok(totalAmount);
             }
@@ -42,14 +42,14 @@ namespace CoinJar.Api.Controllers
 
         // POST api/values
         [HttpPost("AddCoin")]
-        public IActionResult Post([FromBody] CoinModel coinModel)
+        public async Task<IActionResult> Post([FromBody] CoinModel coinModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
                     _logger.LogInformation("Begin addding coin.");
-                    _coinJarService.AddCoin(coinModel);
+                    await _coinJarService.AddCoin(coinModel);
                     _logger.LogInformation("Completed adding coin.");
                     return Ok();
                 }
@@ -58,6 +58,12 @@ namespace CoinJar.Api.Controllers
                     _logger.LogWarning("Invalid coin jar model.");
                     return BadRequest("Please enter a valid amount and volume.");
                 }
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+
+                _logger.LogError(ex, "Failed to add coin to jar. Please try again later.");
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
@@ -69,12 +75,12 @@ namespace CoinJar.Api.Controllers
 
         // PUT api/values/5
         [HttpPut("Reset")]
-        public IActionResult Put()
+        public async Task<IActionResult> Put()
         {
             try
             {
                 _logger.LogInformation("Begin Coin Jar Reset.");
-                _coinJarService.Reset();
+                await _coinJarService.Reset();
                 _logger.LogInformation("Completed Coin Jar Reset.");
                 return Ok("Coin jar reset successfully.");
             }
@@ -83,7 +89,7 @@ namespace CoinJar.Api.Controllers
                 _logger.LogError(ex, "Failed to reset coin jar. Please try again later.");
                 return BadRequest("Failed to reset coin jar. Please try again later.");
             }
- 
+
         }
     }
 }

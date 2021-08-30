@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Threading.Tasks;
+
 namespace CoinJar.Logic.IServices
 {
     public interface ICoinJarService
     {
-        void AddCoin(ICoin coin);
-        decimal GetTotalAmount();
-        void Reset();
+        Task AddCoin(ICoin coin);
+        Task<decimal> GetTotalAmount();
+        Task Reset();
     }
 }

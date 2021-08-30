@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoinJar.Core;
 using CoinJar.Logic.IServices;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace CoinJar.Logic.Services
@@ -18,9 +19,9 @@ namespace CoinJar.Logic.Services
             _ctx = ctx;
         }
 
-        public async void AddCoin(ICoin coin)
+        public async Task AddCoin(ICoin coin)
         {
-            if (IsBelowMaxVolum(coin))
+            if (await IsBelowMaxVolume(coin))
             {
                 await _ctx.Coin.AddAsync(new Coin
                 {
@@ -32,24 +33,24 @@ namespace CoinJar.Logic.Services
             }
             else
             {
-                throw new Exception("Maximum coin join volume reached. Please reset jar.");
+                throw new ArgumentOutOfRangeException("Volume", "Maximum coin join volume reached. Please reset jar.");
             }
         }
 
-        public decimal GetTotalAmount()
+        public async Task<Decimal> GetTotalAmount()
         {
-            return _ctx.Coin.Sum(w => w.Amount);
+            return await _ctx.Coin.SumAsync(w => w.Amount);
         }
 
-        public async void Reset()
+        public async Task Reset()
         {
             _ctx.Coin.RemoveRange(_ctx.Coin.ToList());
             await _ctx.SaveChangesAsync();
         }
 
-        private bool IsBelowMaxVolum(ICoin coin)
+        private async Task<bool> IsBelowMaxVolume(ICoin coin)
         {
-            var currentVolume = _ctx.Coin.Sum(w => w.Volume);
+            var currentVolume = await _ctx.Coin.SumAsync(w => w.Volume);
             if ((coin.Volume + currentVolume) <= 42)
             {
                 return true;

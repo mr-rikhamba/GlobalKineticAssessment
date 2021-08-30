@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinJar.Core", "CoinJar.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinJar.Logic", "CoinJar.Logic\CoinJar.Logic.csproj", "{90B4F6AF-C855-42F3-BAAE-F19BA939694E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinJar.Tests", "CoinJar.Tests\CoinJar.Tests.csproj", "{DC73F0E9-C3F3-4291-B6DB-1D21683BC019}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{90B4F6AF-C855-42F3-BAAE-F19BA939694E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90B4F6AF-C855-42F3-BAAE-F19BA939694E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90B4F6AF-C855-42F3-BAAE-F19BA939694E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC73F0E9-C3F3-4291-B6DB-1D21683BC019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC73F0E9-C3F3-4291-B6DB-1D21683BC019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC73F0E9-C3F3-4291-B6DB-1D21683BC019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC73F0E9-C3F3-4291-B6DB-1D21683BC019}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
