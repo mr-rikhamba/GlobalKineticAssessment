@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinJar.Api", "CoinJar.Api\CoinJar.Api.csproj", "{C8B0CC99-4D37-4403-8B33-065BB9D4157F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8B0CC99-4D37-4403-8B33-065BB9D4157F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B0CC99-4D37-4403-8B33-065BB9D4157F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B0CC99-4D37-4403-8B33-065BB9D4157F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B0CC99-4D37-4403-8B33-065BB9D4157F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECE21A30-8E33-4ABF-A704-FC14D793940C}
+	EndGlobalSection
+EndGlobal
